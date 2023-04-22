@@ -12,7 +12,7 @@ const login = async(req, res)=>{
             }else{
                 //console.log(typeof(nickname));
                 const exUser = rows.filter(row=> row.nick == nickname, (err)=>{
-                    res.status(401).send(err);
+                    throw err;
                 });
                 //console.log(exUser);
                 ///console.log(result.nick);
@@ -46,7 +46,10 @@ const login = async(req, res)=>{
         })
     }catch(err){
         console.log(err);
-        res.status(401).send('DB Get False');
+        res.status(500).send({
+            ok:false,
+            message : err
+        });
     }
 };
 

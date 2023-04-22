@@ -21,7 +21,6 @@ module.exports = {
             return{
                 ok: true,
                 id: decoded.id,
-                role: decoded.role,
             };
         }catch(err){
             return{
